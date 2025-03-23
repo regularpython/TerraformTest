@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "sravan-regularpython"
-    key    = "my_lambda/terraform.tfstate"
+    key    = "my_lambda-2/terraform.tfstate"
     region = "us-east-1"
   }
 }
