@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   Terraform:
     name: 'Terraform'
@@ -12,12 +11,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-    
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::339713066136:role/AWS_ETL_Roles
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+          role-to-assume: arn:aws:iam::339713066136:role/AWS_ETL_Roles
+          # role-session-name: MySessionName
       
       - name: Install Terraform
         uses: hashicorp/terraform-github-actions@v1
