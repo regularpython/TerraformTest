@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - main
+
 jobs:
   Terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -18,12 +21,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::339713066136:role/AWS_ETL_Roles
-          # role-session-name: MySessionName
-      
-      - name: Install Terraform
-        uses: hashicorp/terraform-github-actions@v1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
         with:
-          version: 1.5.7
+          terraform_version: 1.5.7
 
       - name: Terraform Init
         run: terraform init
