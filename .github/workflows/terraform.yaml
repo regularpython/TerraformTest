@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-
+env:
+  env_var: ${{ vars.dev }}
 jobs:
   Terraform:
     name: 'Terraform'
