@@ -26,8 +26,8 @@ resource "aws_s3_bucket" "terraform_state" {
   }
 }
 
-resource "aws_iam_role" "ts_lambda_role" {
-  name = "ts_lambda_role2"
+resource "aws_iam_role" "ts_lambda_role3" {
+  name = "ts_lambda_role3"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
